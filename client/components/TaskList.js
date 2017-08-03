@@ -1,9 +1,24 @@
 import React from 'react'
+
+import {connect} from "react-redux";
+import {fetchTasks} from "../actions/taskAction"
+
+@connect((store) => {
+  return {
+    tasks:store.tasks.tasks
+  }
+})
+
 export default class TaskList extends React.Component {
 
- 
+componentWillMount(){
+      this.props.dispatch(fetchTasks());
+    }
+
+    
 render(){
-   
+  
+  
     function getHtmlValues(value){
         return <h1>Hello {value}</h1>
     }
