@@ -14,6 +14,7 @@ ReactDom.render(<Provider store={store}>
         <Route path='/' component={App}>
             <IndexRoute component={Home}/>
             <Route path='tasks' component={TaskList} />
+            <Route path='home' component={Home} />
         </Route>
     </Router></Provider>,
 document.getElementById('app'))  

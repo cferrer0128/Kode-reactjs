@@ -7,7 +7,7 @@ module.exports = {
   ],
   output: {
     path: require("path").resolve('./client/dist'),
-    filename: 'bundle.js',
+    filename: 'web.bundle.js',
     publicPath:'/'
   },
   plugins:[

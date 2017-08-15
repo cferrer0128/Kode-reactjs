@@ -1,5 +1,4 @@
 import React from 'react'
-
 import {connect} from "react-redux";
 import {fetchTasks} from "../actions/taskAction"
 
@@ -11,17 +10,42 @@ import {fetchTasks} from "../actions/taskAction"
 
 export default class TaskList extends React.Component {
 
-componentWillMount(){
-      this.props.dispatch(fetchTasks());
+   constructor(props) {
+    super(props);
+        this.state = {value: ''};
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+  }
+//
+    handleChange(event) {
+        console.log(event.target.value);
+        this.setState({value: event.target.value});
+    }
+    handleSubmit (event) {
+           event.preventDefault();
+        let newTask = {
+            title:this.state.value,
+            isdone:false,
+            isdeleted:false
+            
+        }
+        console.log('this is data: ' + JSON.stringify(newTask));
+        this.props.dispatch(fetchTasks('add',null,newTask));
+    }
+
+    handleClick (task) {
+        console.log('this is:', task._id);
+        this.props.dispatch(fetchTasks('delete',task._id,null));
+    }
+    componentWillMount(){
+        this.props.dispatch(fetchTasks('get',null,null));
     }
 
     
+ 
 render(){
   
   
-    function getHtmlValues(value){
-        return <h1>Hello {value}</h1>
-    }
     const styles = {
         marginTop: "3px",
         background: "#f1b6b6",
@@ -39,8 +63,11 @@ render(){
 
         return (<tasks>
             <form className="well">
+  
                 <div className="form-group">
-                    <input className="form-control" name="title" placeholder="Add Task..." type="text"  />     
+                    <input className="form-control" name="title" placeholder="Add Task..." 
+                    type="text"  onChange={this.handleChange}/>     
+                    <input className="btn btn-active" type="button" value="Add" onClick={this.handleSubmit}/>
                 </div>  
             </form>
             <div className="task-list">
@@ -52,10 +79,12 @@ render(){
                                                 <input type="checkbox" checked={task.isdone}/>
                                             </div>
                                             <div className="col-md-7">
-                                                    {task.Title}
+                                                    {task.title}
                                             </div> 
+
                                             <div className="col-md-4">
-                                                <input className="btn btn-danger" type="button" value="Delete"/>    
+                                                <input className="btn btn-danger" type="button" 
+                                                value="Delete" onClick={this.handleClick.bind(this,task)}/>    
                                             </div>
                                     </div>
 
@@ -64,10 +93,11 @@ render(){
                                         <input type="checkbox" checked={task.isdone}/>
                                     </div>
                                     <div className="col-md-7">
-                                            {task.Title}
+                                            {task.title}
                                     </div> 
                                     <div className="col-md-4">
-                                        <input className="btn btn-danger" type="button" value="Delete"/>    
+                                        <input className="btn btn-danger" type="button" value="Delete"
+                                        onClick={this.handleClick.bind(this,task)}/>    
                                     </div>
                                 </div>
 

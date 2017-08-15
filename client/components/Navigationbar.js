@@ -24,11 +24,11 @@ export default class Navigationbar extends React.Component {
                     <span className="icon-bar"></span>
                     <span className="icon-bar"></span>
                 </button>
-                <a className="navbar-brand" href="#">reactJs Project</a>
+                <a className="navbar-brand" href="">reactJs Project</a>
                 </div>
                 <div id="navbar" className="navbar-collapse collapse">
                 <ul className="nav navbar-nav">
-                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="home">Home</Link></li>
                     
                     <li><Link to="tasks">Tasks</Link></li>
                 
@@ -41,9 +41,7 @@ export default class Navigationbar extends React.Component {
                 </div>
                
             </div>
-        </nav>
-        
-    )
+        </nav>)
         
         
     }
