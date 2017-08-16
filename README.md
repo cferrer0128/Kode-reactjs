@@ -12,10 +12,10 @@ npm install
 
 ## Run Dev Server
 ```bash
-npm start
+npm run serve
 ```
 
 ## Build To Dist Folder
 ```bash
-npm run build
+
 ```
