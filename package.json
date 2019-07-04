@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "serve": "nodemon bin/www --ignore components",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "",
   "license": "ISC",
@@ -26,7 +28,8 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^2.6.1",
     "redux-promise-middleware": "^4.3.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -46,5 +49,6 @@
     "webpack-dev-middleware": "^1.11.0",
     "webpack-dev-server": "^2.5.1",
     "webpack-hot-middleware": "^2.18.2"
-  }
+  },
+  "snyk": true
 }
